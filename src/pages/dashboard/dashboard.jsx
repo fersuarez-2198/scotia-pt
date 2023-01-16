@@ -1,33 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 
 const Dashboard = () => {
   const user = localStorage.getItem("userName");
+  const [dataP, setData] = useState([]);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    fetch("https://rickandmortyapi.com/api/character")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data.results);
+        console.log(data.results);
+      });
+  };
 
   return (
-    <div class="grid-container">
-      <header class="header">
-        <div class="header__search">Prueba Técnica</div>
-        <div class="header__avatar">{user}</div>
+    <div className="grid-container">
+      <header className="header">
+        <input
+          type="text"
+          placeholder="Buscar..."
+          className="search"
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <div className="header__avatar">{user}</div>
       </header>
 
-      <aside class="sidenav">
-        <div class="sidenav__close-icon">
-          <i class="fas fa-times sidenav__brand-close"></i>
-        </div>
-        <ul class="sidenav__list">
-          <li class="sidenav__list-item">Usuarios</li>
+      <aside className="sidenav">
+        <ul className="sidenav__list">
+          <li className="sidenav__list-item">Usuarios</li>
         </ul>
       </aside>
 
-      <main class="main">
-        <div class="main-header">
-          <div class="main-header__heading">Hello User</div>
+      <main className="main">
+        <div className="main-header">
+          <div className="row">
+            {dataP.map((item) => (
+              <div className="column">
+                <div className="card">
+                  <img className="imageP" src={item.image} />
+                  <h3 className="nameP">{item.name}</h3>
+                  <p>Género: {item.gender}</p>
+                  <p>Especie: {item.species}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
 
-      <footer class="footer">
-        <div class="footer__copyright">&copy; Fabián Rodríguez Suárez</div>
+      <footer className="footer">
+        <div className="footer__copyright">&copy; Fabián Rodríguez Suárez</div>
       </footer>
     </div>
   );
