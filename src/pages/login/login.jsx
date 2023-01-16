@@ -15,6 +15,7 @@ const LoginForm = (props) => {
 
   function login() {
     setLoggedIn(true);
+    localStorage.setItem("userName", values.email);
     history("/dashboard");
   }
 
