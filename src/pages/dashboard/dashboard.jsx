@@ -37,11 +37,12 @@ const Dashboard = () => {
         </ul>
       </aside>
 
-      <main className="main">
-        <div className="main-header">
-          <div className="row">
-            {dataP.map((item) => (
-              <div className="column">
+      <div className="main-header">
+        <div className="row">
+          {dataP
+            .filter((user) => user.name.includes(query))
+            .map((item) => (
+              <div className="column" key={item.id}>
                 <div className="card">
                   <img className="imageP" src={item.image} />
                   <h3 className="nameP">{item.name}</h3>
@@ -50,9 +51,8 @@ const Dashboard = () => {
                 </div>
               </div>
             ))}
-          </div>
         </div>
-      </main>
+      </div>
 
       <footer className="footer">
         <div className="footer__copyright">&copy; Fabián Rodríguez Suárez</div>

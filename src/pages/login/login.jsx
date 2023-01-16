@@ -29,7 +29,7 @@ const LoginForm = (props) => {
               <input
                 placeholder="Correo"
                 autoComplete="off"
-                className={`${errors.email && "is-danger"}`}
+                className={`credential ,${errors.email && "is-danger"}`}
                 type="email"
                 name="email"
                 onChange={handleChange}
@@ -43,7 +43,7 @@ const LoginForm = (props) => {
             <div className="control">
               <input
                 placeholder="Contraseña"
-                className={`${errors.password && "is-danger"}`}
+                className={`credential ,${errors.password && "is-danger"}`}
                 type="password"
                 name="password"
                 onChange={handleChange}

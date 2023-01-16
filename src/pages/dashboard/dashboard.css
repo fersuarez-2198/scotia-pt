@@ -38,6 +38,7 @@ body {
   justify-content: space-between;
   padding: 0 16px;
   background-color: #648ca6;
+  height: 50px;
 }
 
 .header__search {
@@ -89,15 +90,9 @@ body {
   cursor: pointer;
 }
 
-.main {
-  grid-area: main;
-  background-color: #8fd4d9;
-}
-
 .main-header {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
   padding: 20px;
   height: 100%;
   background-color: #e3e4e6;
@@ -168,6 +163,8 @@ body {
   text-align: center;
   background-color: #f1f1f1;
   margin-top: 10px;
+  height: 300px;
+  min-width: 300px;
 }
 
 .nameP,
@@ -177,5 +174,14 @@ body {
 }
 
 .imageP {
-  width: 40%;
+  width: 150px;
+}
+
+/* Input */
+
+input.search {
+  width: 90%;
+  margin: 0;
+  height: 40px !important;
+  padding: 0;
 }
